@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
   <link rel="stylesheet" href="styles.css" />
   <style></style>
-  
+
   <body>
     <div class="w3-container">
       <h2>Jain Food</h2>
@@ -134,47 +134,36 @@
     </div>
   </body>
   <script>
-    function createHTML(json, isArray){
-   
-   var html = '<ul>';
-   for(var key in json){
-       if(typeof json[key] == 'object'){
-           
-           html += '<li>' + (!isArray ? '<strong>'+ key +'</strong>' : '') + '</li>' + createHTML(json[key], (json[key] instanceof Array ? 1 : 0));
-       } else {
-           html += '<li>'+ json[key] +'</li>';
-       }
-   }
-   return html+'</ul>';
-  }
+    function createHTML(json, isArray) {
+      var html = "<ul>";
+      for (var key in json) {
+        if (typeof json[key] == "object") {
+          html +=
+            "<li>" +
+            (!isArray ? "<strong>" + key + "</strong>" : "") +
+            "</li>" +
+            createHTML(json[key], json[key] instanceof Array ? 1 : 0);
+        } else {
+          html += "<li>" + json[key] + "</li>";
+        }
+      }
+      return html + "</ul>";
+    }
 
-  var jsonData = "";
-  document.getElementById('output').innerHTML = createHTML(jsonData, true);
-
-  fetch('https://reqbin.com/echo/get/json', {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-    },
-})
-.then(response => response.json())
-.then(response => console.log(JSON.stringify(response)));
-
-fetch('./eaten.json', {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-		},
-	})
-	.then(response => response.json())
-	.then(response => 
-  
-  {
-    var jsonData = response;
-    document.getElementById('output').innerHTML = createHTML(jsonData, true);
-    console.log(JSON.stringify(response))
-  }
-  
-  );
+    fetch("./eaten.json", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        var jsonData = response;
+        document.getElementById("output").innerHTML = createHTML(
+          jsonData,
+          true
+        );
+        console.log(JSON.stringify(response));
+      });
   </script>
 </html>
