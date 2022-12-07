@@ -1,8 +1,8 @@
 {
   "Foods Eaten": {
     "Grains": ["Wheat", "Rice", "Pulses all", "Millets", "Chickpeas"],
-    "Fat": ["Clarified Butter","Vegetable Oil"],
-    "Spices": ["Salt","Pepper","Coriander"],
+    "Fat": ["Clarified Butter", "Vegetable Oil"],
+    "Spices": ["Salt", "Pepper", "Coriander"],
     "Vegetables": {
       "Greens": ["Spinach"]
     }
