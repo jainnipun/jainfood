@@ -1,9 +1,7 @@
 {
-    "Grains":[
-          "Tapioca"
-        ]
-      ,
-      "Fat":["Cod Liver Oil"],
-      "Spices":["Raw Ginger"]
+  "Foods Not Eaten": {
+    "Grains": ["Tapioca"],
+    "Fat": ["Cod Liver Oil"],
+    "Spices": ["Raw Ginger"]
   }
-  
+}

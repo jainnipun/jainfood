@@ -1,13 +1,7 @@
 {
-    "Grains":[
-          "Wheat",
-          "Rice",
-          "Pulses",
-          "Millets",
-          "Chickpeas"
-        ]
-      ,
-      "Fat":["Vegetable Oil"],
-      "Spices":["Pepper"]
+  "Foods Eaten": {
+    "Grains": ["Wheat", "Rice", "Pulses", "Millets", "Chickpeas"],
+    "Fat": ["Vegetable Oil"],
+    "Spices": ["Pepper"]
   }
-  
+}
