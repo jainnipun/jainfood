@@ -140,7 +140,7 @@
         if (typeof json[key] == "object") {
           html +=
             "<li>" +key+":"+
-            (!isArray ? "<strong>" + key + "</strong>" : "") +
+            (!isArray ? "<strong>" + key + "</strong>" : "<strong>" + key + "</strong>") +
             "</li>" +
             createHTML(json[key], json[key] instanceof Array ? 1 : 0);
         } else {
@@ -163,6 +163,8 @@
           jsonData,
           true
         );
+        console.log("Change 1");
+
         console.log(JSON.stringify(response));
       });
   </script>
