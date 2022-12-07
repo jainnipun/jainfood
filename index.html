@@ -122,22 +122,19 @@
       var html = "<ul>";
       for (var key in json) {
         if (typeof json[key] == "object") {
-          
-          if (json[key]["name"] != "")
-            {
-              html += "<li>" + json[key]["name"] + "</li>";
-            }
-            else{
-          html +=
-            "<li>" +
-            "<strong>" +
-            key +
-            "</strong>" +
-            ":" +
-            "</li>" +
-            createHTML(json[key], json[key] instanceof Array ? 1 : 0);
-        }
-       } else {
+          if (json[key]["name"] != undefined) {
+            html += "<li>" + json[key]["name"] + "</li>";
+          } else {
+            html +=
+              "<li>" +
+              "<strong>" +
+              key +
+              "</strong>" +
+              ":" +
+              "</li>" +
+              createHTML(json[key], json[key] instanceof Array ? 1 : 0);
+          }
+        } else {
           html += "<li>" + json[key] + "</li>";
         }
       }
