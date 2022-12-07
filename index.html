@@ -28,7 +28,8 @@
     </div>
     <div>
       Foods Eaten (खाते हैं):
-      <div id="output"></div>
+      <div id="eaten_list"></div>
+      <div id="not_eaten_eaten_list"></div>
 
       <ul>
         <li>
@@ -153,7 +154,7 @@
       return html + "</ul>";
     }
 
-    fetch("./eaten.json", {
+    fetch("./eaten_en.json", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -162,13 +163,20 @@
       .then((response) => response.json())
       .then((response) => {
         var jsonData = response;
-        document.getElementById("output").innerHTML = createHTML(
-          jsonData,
-          true
-        );
-        console.log("Change 1");
-
-        console.log(JSON.stringify(response));
+        document.getElementById("eaten_list").innerHTML = createHTML(jsonData,true);
       });
+
+      fetch("./not-eaten_en.json", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        var jsonData = response;
+        document.getElementById("not_eaten_eaten_list").innerHTML = createHTML(jsonData,true);
+      });
+      
   </script>
 </html>
