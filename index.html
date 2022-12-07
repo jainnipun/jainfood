@@ -11,6 +11,9 @@
   <style></style>
 
   <body>
+    <button onclick="loadHindi()">हिन्दी</button>
+    <button onclick="loadEnglish()">English</button>
+
     <div class="w3-container">
       <h2>Jain Food</h2>
     </div>
@@ -26,22 +29,15 @@
       हैं, जीव हिंसा से बचने के लिये जैन अन्य vegetables को अपने भोजन मे सम्मलित
       करते हैं।
     </div>
+    
+    <div id="eaten_list"></div>
+    <div id="not_eaten_eaten_list"></div>
+
     <div>
-      Foods Eaten (खाते हैं):
-      <div id="eaten_list"></div>
-      <div id="not_eaten_eaten_list"></div>
+       ():
 
       <ul>
-        <li>
-          Grains (अनाज):
-          <ul>
-            <li>Wheat (गेहूँ)</li>
-            <li>Rice (चावल)</li>
-            <li>Pulses all (दालें सभी)</li>
-            <li>Millets सभी</li>
-            <li>Chickpeas (चना)</li>
-          </ul>
-        </li>
+        
         <li>
           Fat (वसा):
           <ul>
@@ -109,7 +105,7 @@
       </ul>
     </div>
     <div>
-      Not Eaten Foods (नहीं खाते हैं)
+      Not Eaten Foods ()
       <ul>
         <li>Onion (प्याज)</li>
         <li>Garlic (लहसुन)</li>
@@ -154,7 +150,8 @@
       return html + "</ul>";
     }
 
-    fetch("./eaten_en.json", {
+    function loadJson(eatenFile, notEatenFile) {
+      fetch(eatenFile, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -166,7 +163,7 @@
         document.getElementById("eaten_list").innerHTML = createHTML(jsonData,true);
       });
 
-      fetch("./not-eaten_en.json", {
+      fetch(notEatenFile, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -177,6 +174,17 @@
         var jsonData = response;
         document.getElementById("not_eaten_eaten_list").innerHTML = createHTML(jsonData,true);
       });
+    }
+
       
+      function loadHindi(){
+        loadJson("./eaten_en.json","./not-eaten_en.json");
+      }
+      
+      function loadEnglish(){
+        loadJson("./eaten_hi.json","./not-eaten_hi.json");
+}
+
+loadEnglish();
   </script>
 </html>

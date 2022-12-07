@@ -1,13 +1,7 @@
 {
-    "Hindi":[
-          "Wheat",
-          "Rice",
-          "Pulses",
-          "Millets",
-          "Chickpeas"
-        ]
-      ,
-      "Fat":["Vegetable Oil"],
-      "Spices":["Pepper"]
+  "खाते हैं": {
+    "अनाज": ["गेहूँ", "चावल", "दालें सभी", "Millets सभी", "चना"],
+    "Fat": ["Vegetable Oil"],
+    "Spices": ["Pepper"]
   }
-  
+}
