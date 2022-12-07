@@ -29,28 +29,15 @@
       हैं, जीव हिंसा से बचने के लिये जैन अन्य vegetables को अपने भोजन मे सम्मलित
       करते हैं।
     </div>
-    
+
     <div id="eaten_list"></div>
     <div id="not_eaten_eaten_list"></div>
 
     <div>
-       ():
-
       <ul>
-        
         <li>
-          Fat (वसा):
+          Spices:
           <ul>
-            <li>Clarified Butter (देशी घी)</li>
-            <li>Vegetable oil (वनस्पति तेल)</li>
-          </ul>
-        </li>
-        <li>
-          Spices (मसाले):
-          <ul>
-            <li>Salt (नमक)</li>
-            <li>Pepper (मिर्च)</li>
-            <li>Coriander (धनिया)</li>
             <li>Turmeric (हल्दी)</li>
             <li>Cumin (जीरा)</li>
             <li>Garam Masala (गरम मसाला)</li>
@@ -152,39 +139,42 @@
 
     function loadJson(eatenFile, notEatenFile) {
       fetch(eatenFile, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        var jsonData = response;
-        document.getElementById("eaten_list").innerHTML = createHTML(jsonData,true);
-      });
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          var jsonData = response;
+          document.getElementById("eaten_list").innerHTML = createHTML(
+            jsonData,
+            true
+          );
+        });
 
       fetch(notEatenFile, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        var jsonData = response;
-        document.getElementById("not_eaten_eaten_list").innerHTML = createHTML(jsonData,true);
-      });
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          var jsonData = response;
+          document.getElementById("not_eaten_eaten_list").innerHTML =
+            createHTML(jsonData, true);
+        });
     }
 
-      
-      function loadHindi(){
-        loadJson("./eaten_en.json","./not-eaten_en.json");
-      }
-      
-      function loadEnglish(){
-        loadJson("./eaten_hi.json","./not-eaten_hi.json");
-}
+    function loadHindi() {
+      loadJson("./eaten_hi.json", "./not-eaten_hi.json");
+    }
 
-loadEnglish();
+    function loadEnglish() {
+      loadJson("./eaten_en.json", "./not-eaten_en.json");
+    }
+
+    loadEnglish();
   </script>
 </html>
