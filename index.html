@@ -139,7 +139,7 @@
       for (var key in json) {
         if (typeof json[key] == "object") {
           html +=
-            "<li>" +
+            "<li>" +json[key]+":"+
             (!isArray ? "<strong>" + key + "</strong>" : "") +
             "</li>" +
             createHTML(json[key], json[key] instanceof Array ? 1 : 0);
