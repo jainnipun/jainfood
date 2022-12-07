@@ -123,7 +123,13 @@
       for (var key in json) {
         if (typeof json[key] == "object") {
           if (json[key]["name"] != undefined) {
-            html += "<li>" + json[key]["name"] + "</li>";
+            html +=
+              "<li>" +
+              json[key]["name"] +
+              '<img src="' +
+              json[key]["url"] +
+              '" style="width:100px;height:100px;"/>' +
+              "</li>";
           } else {
             html +=
               "<li>" +
