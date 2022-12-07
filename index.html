@@ -123,9 +123,9 @@
       for (var key in json) {
         if (typeof json[key] == "object") {
           
-          if (json[key][name] != "")
+          if (json[key]["name"] != "")
             {
-              html += "<li>" + json[key][name] + "</li>";
+              html += "<li>" + json[key]["name"] + "</li>";
             }
             else{
           html +=
