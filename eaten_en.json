@@ -3,7 +3,7 @@
     "Grains": [
       {
         "name": "Wheat",
-        "url": "https://www.cctraining.uk.com/wp-content/uploads/2017/09/test.png"
+        "url": "./images/wheat.jpg"
       },
       "Rice",
       "Pulses all",
