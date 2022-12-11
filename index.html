@@ -17,8 +17,7 @@
     <div class="w3-container">
       <h2>जैन भोजन</h2>
     </div>
-    <div  id ="main-content">
-    </div>
+    <div id="main-content"></div>
 
     <div id="eaten_list"></div>
     <div id="not_eaten_eaten_list"></div>
@@ -36,12 +35,9 @@
               json[key]["url"] +
               '" style="width:100px;height:100px;"/>' +
               "</li>";
-          }
-          else if (!isNaN(key))
-          {
-            html +=createHTML(json[key], json[key] instanceof Array ? 1 : 0);
-          }
-          else {
+          } else if (!isNaN(key)) {
+            html += createHTML(json[key], json[key] instanceof Array ? 1 : 0);
+          } else {
             html +=
               "<li>" +
               "<strong>" +
@@ -89,19 +85,18 @@
         });
     }
 
-    var main_content_hindi = 
-      'जैन भोजन - जैन धर्म का पालन करने वाले बहुत ही संयमित जीवन शैली को अपनाते हैं।'+
-      '<br />'+
-      'शाकाहारी होते हुए भी वे भोजन मे भी कुछ विशेष नियमों का पालन करते हैं।'+
-      '<br />'+
-      'जैसे जमिकंद अर्थात जमीन के अंदर होने वाली सब्ज़ियाँ को न खाना।'+
-      '<br />'+
-      'इसका कारण यह है कि उक्त सब्जियों में सक्ष्म जीव बहुतायत मात्रा मे होते'+
-      'हैं, जीव हिंसा से बचने के लिये जैन अन्य सब्जियों को अपने भोजन मे सम्मलित करते हैं।';
+    var main_content_hindi =
+      "जैन भोजन - जैन धर्म का पालन करने वाले बहुत ही संयमित जीवन शैली को अपनाते हैं।" +
+      "<br />" +
+      "शाकाहारी होते हुए भी वे भोजन मे भी कुछ विशेष नियमों का पालन करते हैं।" +
+      "<br />" +
+      "जैसे जमिकंद अर्थात जमीन के अंदर होने वाली सब्ज़ियाँ को न खाना।" +
+      "<br />" +
+      "इसका कारण यह है कि उक्त सब्जियों में सक्ष्म जीव बहुतायत मात्रा मे होते" +
+      "हैं, जीव हिंसा से बचने के लिये जैन अन्य सब्जियों को अपने भोजन मे सम्मलित करते हैं।";
 
-      var main_content_english = 'Jain Food';
+    var main_content_english = "Jain Food";
 
-      
     function loadHindi() {
       loadJson("./eaten_hi.json", "./not-eaten_hi.json");
       document.getElementById("main-content").innerHTML = main_content_hindi;
