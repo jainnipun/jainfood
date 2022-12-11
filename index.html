@@ -68,7 +68,7 @@
         .then((response) => response.json())
         .then((response) => {
           var jsonData = response;
-          cacheMap.set(eatenFile) = jsonData;
+          cacheMap.set(eatenFile, jsonData);
           document.getElementById("eaten_list").innerHTML = createHTML(
             jsonData,
             true
@@ -89,6 +89,7 @@
         .then((response) => response.json())
         .then((response) => {
           var jsonData = response;
+          cacheMap.set(notEatenFile, jsonData);
           document.getElementById("not_eaten_eaten_list").innerHTML =
             createHTML(jsonData, true);
         });
