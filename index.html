@@ -64,7 +64,6 @@
         .then((response) => response.json())
         .then((response) => {
           var jsonData = response;
-          console.log(jsonData);
           document.getElementById("eaten_list").innerHTML = createHTML(
             jsonData,
             true
