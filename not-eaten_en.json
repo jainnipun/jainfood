@@ -2,6 +2,7 @@
   "Foods Not Eaten": {
     "Grains": ["Tapioca"],
     "Fat": ["Cod Liver Oil"],
+    "Vegetables":["Onion","Garlic"],
     "Spices": ["Raw Ginger"]
   }
 }

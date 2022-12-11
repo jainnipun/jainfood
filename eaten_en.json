@@ -11,9 +11,41 @@
       "Chickpeas"
     ],
     "Fat": ["Clarified Butter", "Vegetable Oil"],
-    "Spices": ["Salt", "Pepper", "Coriander"],
-    "Vegetables": {
-      "Greens": ["Spinach"]
-    }
+    "Spices": [
+      "Salt",
+      "Pepper",
+      "Coriander",
+      "Turmeric",
+      "Cumin",
+      "Garam Masala",
+      "Fenugreek Seeds",
+      "Ajavayan",
+      "Mustard Seeds",
+      "Dried Mango Powder",
+      "Tamarind"
+    ],
+    "Sweet": ["Sugar", "Khand", "Bura", "Jaggery"],
+    "Vegetables": [
+      "Bottle gourd",
+      "Zucchini",
+      "Apple gourd",
+      "Lady finger",
+      "Pumpkin",
+      "Bitter gourd",
+      "Raw Bananas",
+      { "Greens": ["Spinach", "Mustard", "Fenugreek", "Bathua"] },
+      "Pepper",
+      "Chillies",
+      "Capsicum",
+      "Tomato",
+      "Pea",
+      "Beans",
+      "Sweet corn",
+      "Gooseberry",
+      "Cabbage",
+      "Pointed gourd",
+      "Raw Mango",
+      "Dry Ginger Powder"
+    ]
   }
 }
