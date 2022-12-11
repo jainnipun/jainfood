@@ -33,7 +33,7 @@
               json[key]["name"] +
               '<img src="' +
               json[key]["url"] +
-              '" style="width:100px;height:100px;"/>' +
+              '"/>' +
               "</li>";
           } else if (!isNaN(key)) {
             html += createHTML(json[key], json[key] instanceof Array ? 1 : 0);
