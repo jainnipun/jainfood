@@ -23,13 +23,13 @@
     <div id="not_eaten_eaten_list" style="color:red"></div>></div>
   </body>
   <script>
-    function createHTML(json, isArray, color) {
+    function createHTML(json, isArray) {
       var html = "<ul>";
       for (var key in json) {
         if (typeof json[key] == "object") {
           if (json[key]["name"] != undefined) {
             html +=
-              '<li style="border: 1px solid '+color+';">' +
+              '<li>' +
               json[key]["name"] +
               '<img src="' +
               json[key]["url"] +
@@ -66,8 +66,7 @@
           var jsonData = response;
           document.getElementById("eaten_list").innerHTML = createHTML(
             jsonData,
-            true,
-            'green'
+            true
           );
         });
 
@@ -81,7 +80,7 @@
         .then((response) => {
           var jsonData = response;
           document.getElementById("not_eaten_eaten_list").innerHTML =
-            createHTML(jsonData, true, 'red');
+            createHTML(jsonData, true);
         });
     }
 
