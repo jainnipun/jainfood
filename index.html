@@ -36,7 +36,12 @@
               json[key]["url"] +
               '" style="width:100px;height:100px;"/>' +
               "</li>";
-          } else {
+          }
+          else if (!isNaN(key))
+          {
+            html +=createHTML(json[key], json[key] instanceof Array ? 1 : 0);
+          }
+          else {
             html +=
               "<li>" +
               "<strong>" +
