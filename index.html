@@ -15,7 +15,7 @@
     <button onclick="loadEnglish()">English</button>
 
     <div class="w3-container">
-      <h2>जैन भोजन</h2>
+      <h2 id="heading-label"></h2>
     </div>
     <div id="main-content"></div>
 
@@ -107,11 +107,14 @@
     function loadHindi() {
       loadJson("./eaten_hi.json", "./not-eaten_hi.json");
       document.getElementById("main-content").innerHTML = main_content_hindi;
+      document.getElementById("heading-label").innerHTML = "जैन भोजन";
+
     }
 
     function loadEnglish() {
       loadJson("./eaten_en.json", "./not-eaten_en.json");
       document.getElementById("main-content").innerHTML = main_content_english;
+      document.getElementById("heading-label").innerHTML = "Jain Food";
     }
 
     loadEnglish();
