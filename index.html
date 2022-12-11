@@ -63,6 +63,7 @@
         .then((response) => response.json())
         .then((response) => {
           var jsonData = response;
+          console.log(jsonData);
           document.getElementById("eaten_list").innerHTML = createHTML(
             jsonData,
             true
@@ -104,7 +105,6 @@
     function loadEnglish() {
       loadJson("./eaten_en.json", "./not-eaten_en.json");
       document.getElementById("main-content").innerHTML = main_content_english;
-
     }
 
     loadEnglish();
