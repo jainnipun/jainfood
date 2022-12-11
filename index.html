@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
-  </head>
 
-  <title>Food Prferences</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <style></style>
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+</head>
 
-  <body>
-    <button onclick="loadHindi()">हिन्दी</button>
-    <button onclick="loadEnglish()">English</button>
+<title>Food Prferences</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet" href="styles.css" />
+<style></style>
 
-    <div class="w3-container">
-      <h2 id="heading-label"></h2>
-    </div>
-    <div id="main-content"></div>
+<body>
+  <button onclick="loadHindi()">हिन्दी</button>
+  <button onclick="loadEnglish()">English</button>
 
-    <div id="eaten_list" style="color:green"></div>></div>
-    <div id="not_eaten_eaten_list" style="color:red"></div>></div>
-  </body>
-  <script>
-    function createHTML(json, isArray) {
-      var html = "<ul>";
-      for (var key in json) {
-        if (typeof json[key] == "object") {
-          if (json[key]["name"] != undefined) {
-            html +=
-              '<li>' +
-              json[key]["name"] +
-              '<img src="' +
-              json[key]["url"] +
-              '"/>' +
-              "</li>";
-          } else if (!isNaN(key)) {
-            html += createHTML(json[key], json[key] instanceof Array ? 1 : 0);
-          } else {
-            html +=
-              "<li>" +
-              "<strong>" +
-              key +
-              "</strong>" +
-              ":" +
-              "</li>" +
-              createHTML(json[key], json[key] instanceof Array ? 1 : 0);
-          }
+  <div class="w3-container">
+    <h2 id="heading-label"></h2>
+  </div>
+  <div id="main-content"></div>
+
+  <div id="eaten_list" style="color:green"></div>></div>
+  <div id="not_eaten_eaten_list" style="color:red"></div>></div>
+</body>
+<script>
+  function createHTML(json, isArray) {
+    var html = "<ul>";
+    for (var key in json) {
+      if (typeof json[key] == "object") {
+        if (json[key]["name"] != undefined) {
+          html +=
+            '<li>' +
+            json[key]["name"] +
+            '<img src="' +
+            json[key]["url"] +
+            '"/>' +
+            "</li>";
+        } else if (!isNaN(key)) {
+          html += createHTML(json[key], json[key] instanceof Array ? 1 : 0);
         } else {
-          html += "<li>" + json[key] + "</li>";
+          html +=
+            "<li>" +
+            "<strong>" +
+            key +
+            "</strong>" +
+            ":" +
+            "</li>" +
+            createHTML(json[key], json[key] instanceof Array ? 1 : 0);
         }
+      } else {
+        html += "<li>" + json[key] + "</li>";
       }
-      return html + "</ul>";
     }
+    return html + "</ul>";
+  }
 
-    function loadJson(eatenFile, notEatenFile) {
+  const cacheMap = new Map();
+
+  function loadJson(eatenFile, notEatenFile) {
+    if (cacheMap.get(eatenFile) == undefined) {
       fetch(eatenFile, {
         method: "GET",
         headers: {
@@ -64,12 +68,18 @@
         .then((response) => response.json())
         .then((response) => {
           var jsonData = response;
+          cacheMap.set(eatenFile) = jsonData;
           document.getElementById("eaten_list").innerHTML = createHTML(
             jsonData,
             true
           );
         });
+    }
+    else {
+      document.getElementById("eaten_list").innerHTML = createHTML(cacheMap.get(eatenFile), true);
+    }
 
+    if (cacheMap.get(notEatenFile) == undefined) {
       fetch(notEatenFile, {
         method: "GET",
         headers: {
@@ -83,40 +93,45 @@
             createHTML(jsonData, true);
         });
     }
-
-    var main_content_hindi =
-      "जैन भोजन - जैन धर्म का पालन करने वाले बहुत ही संयमित जीवन शैली को अपनाते हैं।" +
-      "<br />" +
-      "शाकाहारी होते हुए भी वे भोजन मे भी कुछ विशेष नियमों का पालन करते हैं।" +
-      "<br />" +
-      "जैसे जमिकंद अर्थात जमीन के अंदर होने वाली सब्ज़ियाँ को न खाना।" +
-      "<br />" +
-      "इसका कारण यह है कि उक्त सब्जियों में सक्ष्म जीव बहुतायत मात्रा मे होते हैं, " +
-      "जीव हिंसा से बचने के लिये जैन अन्य सब्जियों को अपने भोजन मे सम्मलित करते हैं।";
-
-    var main_content_english = 
-      "Jain Food - Followers of Jainism lead a very austere lifestyle." +
-      "<br />"+
-      "Even though they are vegetarians, they follow some special rules in food also." +
-      "<br />"+
-      "Like root vegetables, means not to eat the vegetables that grow inside the ground."+
-      "<br />"+
-      "The reason for this is that the said vegetables contain micro-organisms in abundance, "+
-      "Jains add other vegetables to their diet to avoid animal violence.";
-
-    function loadHindi() {
-      document.getElementById("heading-label").innerHTML = "जैन भोजन";
-      loadJson("./data/eaten_hi.json", "./data/not-eaten_hi.json");
-      document.getElementById("main-content").innerHTML = main_content_hindi;
-
+    else {
+      document.getElementById("eaten_list").innerHTML = createHTML(cacheMap.get(notEatenFile), true);
     }
+  }
 
-    function loadEnglish() {
-      document.getElementById("heading-label").innerHTML = "Jain Food";
-      loadJson("./data/eaten_en.json", "./data/not-eaten_en.json");
-      document.getElementById("main-content").innerHTML = main_content_english;
-    }
+  var main_content_hindi =
+    "जैन भोजन - जैन धर्म का पालन करने वाले बहुत ही संयमित जीवन शैली को अपनाते हैं।" +
+    "<br />" +
+    "शाकाहारी होते हुए भी वे भोजन मे भी कुछ विशेष नियमों का पालन करते हैं।" +
+    "<br />" +
+    "जैसे जमिकंद अर्थात जमीन के अंदर होने वाली सब्ज़ियाँ को न खाना।" +
+    "<br />" +
+    "इसका कारण यह है कि उक्त सब्जियों में सक्ष्म जीव बहुतायत मात्रा मे होते हैं, " +
+    "जीव हिंसा से बचने के लिये जैन अन्य सब्जियों को अपने भोजन मे सम्मलित करते हैं।";
 
-    loadEnglish();
-  </script>
+  var main_content_english =
+    "Jain Food - Followers of Jainism lead a very austere lifestyle." +
+    "<br />" +
+    "Even though they are vegetarians, they follow some special rules in food also." +
+    "<br />" +
+    "Like root vegetables, means not to eat the vegetables that grow inside the ground." +
+    "<br />" +
+    "The reason for this is that the said vegetables contain micro-organisms in abundance, " +
+    "Jains add other vegetables to their diet to avoid animal violence.";
+
+  function loadHindi() {
+    document.getElementById("heading-label").innerHTML = "जैन भोजन";
+    loadJson("./data/eaten_hi.json", "./data/not-eaten_hi.json");
+    document.getElementById("main-content").innerHTML = main_content_hindi;
+
+  }
+
+  function loadEnglish() {
+    document.getElementById("heading-label").innerHTML = "Jain Food";
+    loadJson("./data/eaten_en.json", "./data/not-eaten_en.json");
+    document.getElementById("main-content").innerHTML = main_content_english;
+  }
+
+  loadEnglish();
+</script>
+
 </html>
