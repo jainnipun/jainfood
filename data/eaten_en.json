@@ -26,6 +26,8 @@
     ],
     "Sweet": ["Sugar", "Khand", "Bura", "Jaggery"],
     "Vegetables": [
+      "Greens",
+      ["Spinach", "Mustard", "Fenugreek", "Bathua"],
       { "Greens": ["Spinach", "Mustard", "Fenugreek", "Bathua"] },
       "Bottle gourd",
       "Zucchini",
