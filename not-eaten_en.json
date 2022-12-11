@@ -1,8 +1,30 @@
 {
-  "Foods Not Eaten": {
-    "Grains": ["Tapioca"],
-    "Fat": ["Cod Liver Oil"],
-    "Vegetables":["Onion","Garlic"],
-    "Spices": ["Raw Ginger"]
+    "Foods Not Eaten": {
+      "Grains": ["Tapioca"],
+      "Fat": ["Cod Liver Oil"],
+      "Vegetables": [
+        "All Root vegetables",
+        "Onion",
+        "Garlic",
+        "Potato",
+        "Mushroom",
+        "Brinjal/Aubergine",
+        "Raw Ginger(root)",
+        "Radish",
+        "Carrot",
+        "Taro",
+        "Sweet potato",
+        "Beetroot",
+        "Colocasia root",
+        "Yam",
+        "Elephant Foot Yam",
+        "Arrowroot",
+        "Turnip",
+        "Cauliflower",
+        "Raw turmeric root",
+        "Raw papaya"
+      ],
+      "Spices": ["Onion Powder","Garlic Powder"]
+    }
   }
-}
+  

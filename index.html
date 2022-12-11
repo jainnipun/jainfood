@@ -15,49 +15,13 @@
     <button onclick="loadEnglish()">English</button>
 
     <div class="w3-container">
-      <h2>Jain Food</h2>
+      <h2>जैन भोजन</h2>
     </div>
-    <div>
-      जैन food जैन धर्म का पालन करने वाले बहुत ही संयमित जीवन शैली को अपनाते
-      हैं।
-      <br />
-      शाकाहारी होते हुए भी वे भोजन मे भी कुछ विशेष नियमों का पालन करते हैं।
-      <br />
-      जैसे जमिकंद अर्थात जमीन के अंदर होने वाली vegetables को न खाना।
-      <br />
-      इसका कारण यह है कि उक्त vegetables में सक्ष्म जीव बहुतायत मात्रा मे होते
-      हैं, जीव हिंसा से बचने के लिये जैन अन्य vegetables को अपने भोजन मे सम्मलित
-      करते हैं।
+    <div  id ="main-content">
     </div>
 
     <div id="eaten_list"></div>
     <div id="not_eaten_eaten_list"></div>
-
-    <div>
-      Not Eaten Foods ()
-      <ul>
-        <li> (प्याज)</li>
-        <li>Garlic (लहसुन)</li>
-        <li>Potato (आलू)</li>
-        <li>Mushroom (मशरुम)</li>
-        <li>Brinjal/Aubergine (बैंगन)</li>
-        <li>Ginger (अदरक)</li>
-        <li>Raddish (मूली)</li>
-        <li>Carrot (गाजर)</li>
-        <li>Root vegetables (जमिकंद)</li>
-        <li>Taro (कचालू)</li>
-        <li>Sweet potato (शकरकंद)</li>
-        <li>Beetroot (चुकंदर)</li>
-        <li>Colocasia root (अरबी)</li>
-        <li>Yam (रतालू)</li>
-        <li>Elephant Foot Yam ( जिमीकंद / ओल)</li>
-        <li>Arrowroot (अरारोट)</li>
-        <li>Turnip (शलजम)</li>
-        <li>Cauliflower (Phhol Gobhi)</li>
-        <li>Raw turmeric (कच्ची हल्दी)</li>
-        <li>Raw papaya (कच्चा पपीता)</li>
-      </ul>
-    </div>
   </body>
   <script>
     function createHTML(json, isArray) {
@@ -119,12 +83,28 @@
         });
     }
 
+    var main_content_hindi = 
+      'जैन भोजन - जैन धर्म का पालन करने वाले बहुत ही संयमित जीवन शैली को अपनाते हैं।'+
+      '<br />'+
+      'शाकाहारी होते हुए भी वे भोजन मे भी कुछ विशेष नियमों का पालन करते हैं।'+
+      '<br />'+
+      'जैसे जमिकंद अर्थात जमीन के अंदर होने वाली सब्ज़ियाँ को न खाना।'+
+      '<br />'+
+      'इसका कारण यह है कि उक्त सब्जियों में सक्ष्म जीव बहुतायत मात्रा मे होते'+
+      'हैं, जीव हिंसा से बचने के लिये जैन अन्य सब्जियों को अपने भोजन मे सम्मलित करते हैं।';
+
+      var main_content_english = 'Jain Food';
+
+      
     function loadHindi() {
       loadJson("./eaten_hi.json", "./not-eaten_hi.json");
+      document.getElementById("main-content").innerHTML = main_content_hindi;
     }
 
     function loadEnglish() {
       loadJson("./eaten_en.json", "./not-eaten_en.json");
+      document.getElementById("main-content").innerHTML = main_content_english;
+
     }
 
     loadEnglish();
