@@ -14,6 +14,7 @@
 <body>
   <button onclick="loadHindi()">हिन्दी</button>
   <button onclick="loadEnglish()">English</button>
+  <button onclick="loadSanskrit()">संस्कृतम्</button>
 
   <div class="w3-container">
     <h2 id="heading-label"></h2>
@@ -119,7 +120,15 @@
     "<br />" +
     "The reason for this is that the said vegetables contain micro-organisms in abundance, " +
     "Jains add other vegetables to their diet to avoid animal violence.";
-
+    var main_content_sanskrit =
+    "जैनभोजनम् - जैनधर्मस्य अनुयायिनः अतीव तपस्वी जीवनशैलीं यापयन्ति।" +
+     "<br />" +
+     "शाकाहारिणः अपि भोजने अपि केचन विशेषनियमाः अनुसरन्ति।" +
+     "<br />" +
+     "मूलशाकवत्, भूमौ अन्तः वर्धमानं शाकं न खादितव्यम् इति अर्थः।" +
+     "<br />" +
+     "अस्य कारणं यत् उक्तशाकेषु सूक्ष्मजीवाः प्रचुररूपेण सन्ति, " +
+     "जैनः पशुहिंसायाः परिहाराय अन्यशाकान् स्वभोजने योजयन्ति।";
   function loadHindi() {
     document.getElementById("heading-label").innerHTML = "जैन भोजन";
     loadJson("./data/eaten_hi.json", "./data/not-eaten_hi.json");
@@ -132,6 +141,12 @@
     loadJson("./data/eaten_en.json", "./data/not-eaten_en.json");
     document.getElementById("main-content").innerHTML = main_content_english;
   }
+
+function loadSanskrit() {
+  document.getElementById("heading-label").innerHTML = "जैन भोजन";
+  loadJson("./data/eaten_san.json", "./data/not-eaten_san.json");
+  document.getElementById("main-content").innerHTML = main_content_sanskrit;
+}
 
   loadEnglish();
 </script>
